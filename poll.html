@@ -35,7 +35,7 @@
                     <li><a href="index.html#heroes"><i class="fas fa-star"></i> Герои</a></li>
                     <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
                     <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
-                    <li><a href="statistics.html">Статистика</a></li>
+                    <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
                     <li><a href="poll.html" class="active"><i class="fas fa-poll"></i> Опрос</a></li>
                     <li><a href="index.html#creators"><i class="fas fa-code"></i> Создатели</a></li>
                 </ul>
@@ -76,23 +76,23 @@
                         <label>2. Как вы обычно отмечаете День Победы? (можно выбрать несколько вариантов)</label>
                         <div class="option-group">
                             <div class="option-item">
-                                <input type="checkbox" id="celebration1" name="celebration[]" value="parade">
+                                <input type="checkbox" id="celebration1" value="parade">
                                 <label for="celebration1">Смотрю парад Победы по телевизору</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="celebration2" name="celebration[]" value="memorial">
+                                <input type="checkbox" id="celebration2" value="memorial">
                                 <label for="celebration2">Посещаю мемориалы, возлагаю цветы</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="celebration3" name="celebration[]" value="family">
+                                <input type="checkbox" id="celebration3" value="family">
                                 <label for="celebration3">Встречаюсь с семьей, вспоминаем родственников-участников войны</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="celebration4" name="celebration[]" value="st-george">
+                                <input type="checkbox" id="celebration4" value="st-george">
                                 <label for="celebration4">Участвую в акции "Бессмертный полк"</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="celebration5" name="celebration[]" value="other">
+                                <input type="checkbox" id="celebration5" value="other">
                                 <label for="celebration5">Другое (укажите в комментариях)</label>
                             </div>
                         </div>
@@ -102,23 +102,23 @@
                         <label>3. Откуда вы получаете информацию о Великой Отечественной войне? (можно выбрать несколько вариантов)</label>
                         <div class="option-group">
                             <div class="option-item">
-                                <input type="checkbox" id="source1" name="sources[]" value="books">
+                                <input type="checkbox" id="source1" value="books">
                                 <label for="source1">Книги, учебники истории</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="source2" name="sources[]" value="documentaries">
+                                <input type="checkbox" id="source2" value="documentaries">
                                 <label for="source2">Документальные фильмы</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="source3" name="sources[]" value="veterans">
+                                <input type="checkbox" id="source3" value="veterans">
                                 <label for="source3">Рассказы ветеранов, участников войны</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="source4" name="sources[]" value="museums">
+                                <input type="checkbox" id="source4" value="museums">
                                 <label for="source4">Музеи, мемориальные комплексы</label>
                             </div>
                             <div class="option-item">
-                                <input type="checkbox" id="source5" name="sources[]" value="internet">
+                                <input type="checkbox" id="source5" value="internet">
                                 <label for="source5">Интернет-ресурсы</label>
                             </div>
                         </div>
@@ -126,18 +126,24 @@
                     
                     <div class="form-group">
                         <label>4. Как вы оцениваете уровень знаний молодого поколения о Великой Отечественной войне?</label>
-                        <select class="form-control" name="knowledge_level" required>
-                            <option value="" disabled selected>Выберите вариант</option>
-                            <option value="high">Высокий - молодежь хорошо знает историю войны</option>
-                            <option value="medium">Средний - есть базовые знания, но есть и пробелы</option>
-                            <option value="low">Низкий - знания поверхностные или отсутствуют</option>
-                            <option value="dont_know">Затрудняюсь ответить</option>
-                        </select>
+                        <div class="form-floating">
+                            <select class="form-select" id="knowledgeSelect" aria-label="knowledge level select">
+                                <option value="" disabled selected>Выберите вариант</option>
+                                <option value="high">Высокий - молодежь хорошо знает историю войны</option>
+                                <option value="medium">Средний - есть базовые знания, но есть и пробелы</option>
+                                <option value="low">Низкий - знания поверхностные или отсутствуют</option>
+                                <option value="dont_know">Затрудняюсь ответить</option>
+                            </select>
+                            <label for="knowledgeSelect">Уровень знаний</label>
+                        </div>
                     </div>
                     
                     <div class="form-group">
                         <label>5. Что, по вашему мнению, могло бы усилить интерес молодежи к изучению истории Великой Отечественной войны?</label>
-                        <textarea class="form-control" name="suggestions" placeholder="Ваши предложения..." required></textarea>
+                        <div class="form-floating">
+                            <textarea class="form-control" name="suggestions" id="suggestionText" placeholder="name@example.com" required></textarea>
+                            <label class="fw-normal" for="suggestionText">Ваши предложения...</label>
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn-submit">Отправить</button>
