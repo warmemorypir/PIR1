@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Опрос | В ПАМЯТЬ О ПОБЕДЕ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="wwwroot/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="wwwroot/css/poll.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="wwwroot/images/icon.svg" alt="Логотип Герб СССР">
+                <div class="logo-text">
+                    <h1>В ПАМЯТЬ О ПОБЕДЕ</h1>
+                    <p>1941-1945</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
+                    <li><a href="index.html#heroes"><i class="fas fa-star"></i> Герои</a></li>
+                    <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+                    <li><a href="index2.html">Статистика</a></li>
+                    <li><a href="poll.html" class="active"><i class="fas fa-poll"></i> Опрос</a></li>
+                    <li><a href="index.html#creators"><i class="fas fa-code"></i> Создатели</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section poll-section">
+        <div class="container">
+            <div class="poll-container">
+                <h2 class="poll-title">Опрос: Память о войне</h2>
+                <p class="poll-description">Поделитесь своим мнением о сохранении памяти о Великой Отечественной войне</p>
+                
+                <form id="warMemoryPoll">
+                    <div class="form-group">
+                        <label>1. Как вы считаете, насколько важно сохранять память о Великой Отечественной войне?</label>
+                        <div class="option-group">
+                            <div class="option-item">
+                                <input type="radio" id="importance1" name="importance" value="very" required>
+                                <label for="importance1">Крайне важно - это наша история и урок для будущих поколений</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="importance2" name="importance" value="important">
+                                <label for="importance2">Важно, но не должно быть навязчивым</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="importance3" name="importance" value="neutral">
+                                <label for="importance3">Нейтрально - это часть истории, но не более</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="radio" id="importance4" name="importance" value="not_important">
+                                <label for="importance4">Не очень важно - это было давно и неактуально сегодня</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>2. Как вы обычно отмечаете День Победы? (можно выбрать несколько вариантов)</label>
+                        <div class="option-group">
+                            <div class="option-item">
+                                <input type="checkbox" id="celebration1" name="celebration[]" value="parade">
+                                <label for="celebration1">Смотрю парад Победы по телевизору</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="celebration2" name="celebration[]" value="memorial">
+                                <label for="celebration2">Посещаю мемориалы, возлагаю цветы</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="celebration3" name="celebration[]" value="family">
+                                <label for="celebration3">Встречаюсь с семьей, вспоминаем родственников-участников войны</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="celebration4" name="celebration[]" value="st-george">
+                                <label for="celebration4">Участвую в акции "Бессмертный полк"</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="celebration5" name="celebration[]" value="other">
+                                <label for="celebration5">Другое (укажите в комментариях)</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>3. Откуда вы получаете информацию о Великой Отечественной войне? (можно выбрать несколько вариантов)</label>
+                        <div class="option-group">
+                            <div class="option-item">
+                                <input type="checkbox" id="source1" name="sources[]" value="books">
+                                <label for="source1">Книги, учебники истории</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="source2" name="sources[]" value="documentaries">
+                                <label for="source2">Документальные фильмы</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="source3" name="sources[]" value="veterans">
+                                <label for="source3">Рассказы ветеранов, участников войны</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="source4" name="sources[]" value="museums">
+                                <label for="source4">Музеи, мемориальные комплексы</label>
+                            </div>
+                            <div class="option-item">
+                                <input type="checkbox" id="source5" name="sources[]" value="internet">
+                                <label for="source5">Интернет-ресурсы</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>4. Как вы оцениваете уровень знаний молодого поколения о Великой Отечественной войне?</label>
+                        <select class="form-control" name="knowledge_level" required>
+                            <option value="" disabled selected>Выберите вариант</option>
+                            <option value="high">Высокий - молодежь хорошо знает историю войны</option>
+                            <option value="medium">Средний - есть базовые знания, но есть и пробелы</option>
+                            <option value="low">Низкий - знания поверхностные или отсутствуют</option>
+                            <option value="dont_know">Затрудняюсь ответить</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>5. Что, по вашему мнению, могло бы усилить интерес молодежи к изучению истории Великой Отечественной войны?</label>
+                        <textarea class="form-control" name="suggestions" placeholder="Ваши предложения..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Отправить</button>
+                </form>
+                
+                <div class="thank-you-message" id="thankYouMessage">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Спасибо за участие!</h3>
+                    <p>Ваши ответы помогут нам лучше понять, как сохранять память о Великой Отечественной войне.</p>
+                    <a href="index.html" class="btn-submit">Вернуться на главную</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О проекте</h3>
+                    <p>Сайт посвященный памяти о Великой Отечественной войне и героических подвигах советского народа.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Разделы</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="index.html#timeline"><i class="fas fa-chevron-right"></i> Хронология</a></li>
+                        <li><a href="index.html#heroes"><i class="fas fa-chevron-right"></i> Герои</a></li>
+                        <li><a href="memorials.html"><i class="fas fa-chevron-right"></i> Мемориал</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul class="footer-links">
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Галерея</a></li>
+                        <li><a href="index.html#contemporaries"><i class="fas fa-chevron-right"></i> Современники</a></li>
+                        <li><a href="poll.html"><i class="fas fa-chevron-right"></i> Опрос</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Архив документов</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> warmemorypir@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Тюмень, ул. Ленина, 23</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 В ПАМЯТЬ О ПОБЕДЕ. Все права защищены.</p>
+                <p>Тюменский Государственный Университет</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Обработка навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                if (window.innerWidth <= 768) {
+                    document.getElementById('mainNav').classList.remove('active');
+                }
+            });
+        });
+        
+        // Фиксация шапки при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+        
+        // Обработка формы опроса
+        const pollForm = document.getElementById('warMemoryPoll');
+        const thankYouMessage = document.getElementById('thankYouMessage');
+        
+        pollForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Здесь можно добавить AJAX-запрос для отправки данных на сервер
+            // Для примера просто покажем сообщение об успешной отправке
+            
+            // Скрываем форму
+            pollForm.style.display = 'none';
+            
+            // Показываем сообщение
+            thankYouMessage.style.display = 'block';
+            
+            // Прокручиваем к сообщению
+            thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
