@@ -1,0 +1,51 @@
+.memorial-card {
+    background: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    margin-bottom: 30px;
+}
+
+    .memorial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+    }
+
+.memorial-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.memorial-content {
+    padding: 20px;
+}
+
+    .memorial-content h3 {
+        color: var(--primary);
+        margin-bottom: 10px;
+    }
+
+    .memorial-content p {
+        color: var(--gray);
+        margin-bottom: 15px;
+    }
+
+.memorial-location {
+    display: flex;
+    align-items: center;
+    color: var(--gray);
+    font-size: 0.9rem;
+}
+
+    .memorial-location i {
+        margin-right: 5px;
+        color: var(--primary);
+    }
+
+.memorial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+}
