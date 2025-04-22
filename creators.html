@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создатели проекта | В ПАМЯТЬ О ПОБЕДЕ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="wwwroot/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .creator-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .creator-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .creator-img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .creator-content {
+            padding: 20px;
+        }
+
+        .creator-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .creator-role {
+            color: var(--gray);
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .creator-bio {
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .creator-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .creator-social a {
+            width: 40px;
+            height: 40px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .creator-social a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .section-title h2::after {
+            width: 100px;
+        }
+
+        .university-logo {
+            max-width: 200px;
+            margin: 30px auto;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="wwwroot/images/icon.svg" alt="Логотип Герб СССР">
+                <div class="logo-text">
+                    <h1>В ПАМЯТЬ О ПОБЕДЕ</h1>
+                    <p>1941-1945</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
+                    <li><a href="index.html#heroes"><i class="fas fa-star"></i> Герои</a></li>
+                    <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+                    <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+                    <li><a href="poll.html"><i class="fas fa-poll"></i> Опрос</a></li>
+                    <li><a href="creators.html" class="active"><i class="fas fa-code"></i> Создатели</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section mt-5" style="padding-top: 100px;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Команда создателей</h2>
+                <p>Люди, которые работали над этим проектом, чтобы сохранить память о Великой Победе</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/creator1.jpg" alt="Иван Иванов" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Иван Иванов</h3>
+                        <span class="creator-role">Руководитель проекта</span>
+                        <p class="creator-bio">Историк, специалист по Великой Отечественной войне. Организовал работу команды и курировал содержательную часть проекта.</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/creator2.jpg" alt="Петр Петров" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Петр Петров</h3>
+                        <span class="creator-role">Веб-разработчик</span>
+                        <p class="creator-bio">Разработал архитектуру сайта, реализовал интерактивные элементы и обеспечил техническую поддержку проекта.</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-linkedin"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/creator3.jpg" alt="Анна Сидорова" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Анна Сидорова</h3>
+                        <span class="creator-role">Дизайнер</span>
+                        <p class="creator-bio">Создала визуальную концепцию проекта, разработала интерфейс и обеспечила удобство пользования сайтом.</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-behance"></i></a>
+                            <a href="#"><i class="fab fa-dribbble"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/creator4.jpg" alt="Сергей Кузнецов" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Сергей Кузнецов</h3>
+                        <span class="creator-role">Контент-менеджер</span>
+                        <p class="creator-bio">Подготовил текстовые материалы, проверил историческую достоверность информации и организовал работу с архивами.</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-telegram"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/creator5.jpg" alt="Мария Смирнова" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Мария Смирнова</h3>
+                        <span class="creator-role">Журналист</span>
+                        <p class="creator-bio">Провела интервью с ветеранами, собрала личные истории и подготовила репортажи для проекта.</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-vk"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/creator6.jpg" alt="Алексей Федоров" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Алексей Федоров</h3>
+                        <span class="creator-role">Видеооператор</span>
+                        <p class="creator-bio">Снял и смонтировал видеоматериалы для проекта, включая интервью с ветеранами и документальные сюжеты.</p>
+                        <div class="creator-social">
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            <a href="#"><i class="fab fa-vimeo"></i></a>
+                            <a href="#"><i class="fas fa-envelope"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section-title" style="margin-top: 60px;">
+                <h2>Научные консультанты</h2>
+                <p>Эксперты, которые помогли сделать проект исторически точным</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/consultant1.jpg" alt="Доктор исторических наук" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Проф. Александров А.Н.</h3>
+                        <span class="creator-role">Доктор исторических наук</span>
+                        <p class="creator-bio">Консультировал по вопросам хронологии событий и достоверности исторических фактов.</p>
+                    </div>
+                </div>
+                
+                <div class="creator-card">
+                    <img src="wwwroot/images/creators/consultant2.jpg" alt="Ветеран ВОВ" class="creator-img">
+                    <div class="creator-content">
+                        <h3>Иван Петрович Семенов</h3>
+                        <span class="creator-role">Ветеран Великой Отечественной войны</span>
+                        <p class="creator-bio">Поделился личными воспоминаниями и помог воссоздать атмосферу военных лет.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <img src="wwwroot/images/university-logo.png" alt="Тюменский Государственный Университет" class="university-logo">
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О проекте</h3>
+                    <p>Сайт посвященный памяти о Великой Отечественной войне и героических подвигах советского народа.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Разделы</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="index.html#timeline"><i class="fas fa-chevron-right"></i> Хронология</a></li>
+                        <li><a href="index.html#heroes"><i class="fas fa-chevron-right"></i> Герои</a></li>
+                        <li><a href="memorials.html"><i class="fas fa-chevron-right"></i> Мемориал</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul class="footer-links">
+                        <li><a href="gallery.html"><i class="fas fa-chevron-right"></i> Галерея</a></li>
+                        <li><a href="statistics.html"><i class="fas fa-chevron-right"></i> Статистика</a></li>
+                        <li><a href="poll.html"><i class="fas fa-chevron-right"></i> Опрос</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Архив документов</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> warmemorypir@gmail.com</p>
+                    <p><i class="fas fa-phone"></i> +7 (XXX) XXX-XX-XX</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Тюмень, ул. Ленина, 23</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 В ПАМЯТЬ О ПОБЕДЕ. Все права защищены.</p>
+                <p>Тюменский Государственный Университет</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                if (window.innerWidth <= 768) {
+                    document.getElementById('mainNav').classList.remove('active');
+                }
+            });
+        });
+        
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

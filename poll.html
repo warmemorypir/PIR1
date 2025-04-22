@@ -30,14 +30,14 @@
             
             <nav id="mainNav">
                 <ul>
-                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
-                    <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
-                    <li><a href="index.html#heroes"><i class="fas fa-star"></i> Герои</a></li>
-                    <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
-                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
-                    <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
-                    <li><a href="poll.html" class="active"><i class="fas fa-poll"></i> Опрос</a></li>
-                    <li><a href="index.html#creators"><i class="fas fa-code"></i> Создатели</a></li>
+        <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+        <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
+        <li><a href="index.html#heroes"><i class="fas fa-star"></i> Герои</a></li>
+        <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
+        <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+        <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+        <li><a href="poll.html"><i class="fas fa-poll"></i> Опрос</a></li>
+        <li><a href="creators.html#creators"><i class="fas fa-code"></i> Создатели</a></li>
                 </ul>
             </nav>
         </div>
@@ -159,6 +159,232 @@
         </div>
     </section>
 
+    <!-- Статистика ответов -->
+    <section class="section stats-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Статистика ответов</h2>
+            
+            <div class="row g-4">
+                <!-- Важность памяти о войне -->
+                <div class="col-md-6">
+                    <div class="stats-card h-100">
+                        <h3 class="stats-title">Важность памяти о войне</h3>
+                        <div class="progress-container">
+                            <div class="progress-item">
+                                <label>Крайне важно</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: 78%" aria-valuenow="78" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="progress-value">78%</span>
+                            </div>
+                            <div class="progress-item">
+                                <label>Важно, но не навязчиво</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="progress-value">15%</span>
+                            </div>
+                            <div class="progress-item">
+                                <label>Нейтрально</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="progress-value">5%</span>
+                            </div>
+                            <div class="progress-item">
+                                <label>Не очень важно</label>
+                                <div class="progress">
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: 2%" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <span class="progress-value">2%</span>
+                            </div>
+                        </div>
+                        <div class="stats-footer">
+                            <i class="fas fa-users"></i> Всего ответов: 1,245
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Источники информации -->
+                <div class="col-md-6">
+                    <div class="stats-card h-100">
+                        <h3 class="stats-title">Источники информации о войне</h3>
+                        <div class="chart-container">
+                            <canvas id="sourcesChart"></canvas>
+                        </div>
+                        <div class="stats-footer">
+                            <i class="fas fa-chart-pie"></i> Множественный выбор
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Оценка знаний молодежи -->
+                <div class="col-md-6">
+                    <div class="stats-card h-100">
+                        <h3 class="stats-title">Оценка знаний молодежи</h3>
+                        <div class="doughnut-container">
+                            <canvas id="knowledgeChart"></canvas>
+                        </div>
+                        <div class="stats-footer">
+                            <i class="fas fa-graduation-cap"></i> По мнению респондентов
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Традиции празднования -->
+                <div class="col-md-6">
+                    <div class="stats-card h-100">
+                        <h3 class="stats-title">Традиции празднования Дня Победы</h3>
+                        <div class="chart-container">
+                            <canvas id="celebrationChart"></canvas>
+                        </div>
+                        <div class="stats-footer">
+                            <i class="fas fa-calendar-check"></i> Множественный выбор
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Видео опросы до 9 мая -->
+    <section class="section video-section bg-light">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Видео опросы до 9 мая</h2>
+            <p class="text-center mb-5">Мнения людей о роли СССР в Победе над нацизмом в преддверии Дня Победы</p>
+            
+            <div class="row g-4 video-grid">
+                <!-- 25 видео элементов -->
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Иван Петров, ветеран</h4>
+                            <p>О первых днях войны</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Мария Сидорова, блокадница</h4>
+                            <p>Воспоминания о Ленинграде</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Алексей Козлов, историк</h4>
+                            <p>Роль СССР в Победе</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Елена Морозова</h4>
+                            <p>Семейные истории</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Еще 21 видео (в реальном проекте нужно добавить реальные ссылки) -->
+                <!-- Пример еще одного видео -->
+                <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Дмитрий Смирнов</h4>
+                            <p>О значении Победы</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Остальные видео элементы аналогично -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Видео опросы после 9 мая -->
+    <section class="section video-section">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Видео опросы после 9 мая</h2>
+            <p class="text-center mb-5">Реакции и размышления людей после празднования Дня Победы</p>
+            
+            <div class="row g-4 video-grid">
+                <!-- 10-15 видео элементов -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Анна Кузнецова</h4>
+                            <p>Впечатления от парада</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Сергей Иванов</h4>
+                            <p>Участие в Бессмертном полку</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Ольга Петрова</h4>
+                            <p>Семейные традиции</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Еще 7-12 видео (в реальном проекте нужно добавить реальные ссылки) -->
+                <!-- Пример еще одного видео -->
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="video-card">
+                        <div class="ratio ratio-16x9">
+                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" allowfullscreen></iframe>
+                        </div>
+                        <div class="video-info">
+                            <h4>Михаил Волков</h4>
+                            <p>Размышления о Победе</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Остальные видео элементы аналогично -->
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -206,6 +432,9 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Подключаем Chart.js для графиков -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     
     <script>
         // Обработка навигации
@@ -259,6 +488,110 @@
             
             // Прокручиваем к сообщению
             thankYouMessage.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Инициализация графиков
+        document.addEventListener('DOMContentLoaded', function() {
+            // График источников информации
+            const sourcesCtx = document.getElementById('sourcesChart').getContext('2d');
+            const sourcesChart = new Chart(sourcesCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Книги', 'Документальные фильмы', 'Рассказы ветеранов', 'Музеи', 'Интернет'],
+                    datasets: [{
+                        label: 'Процент использования',
+                        data: [45, 68, 32, 28, 82],
+                        backgroundColor: [
+                            'rgba(211, 47, 47, 0.7)',
+                            'rgba(244, 67, 54, 0.7)',
+                            'rgba(229, 57, 53, 0.7)',
+                            'rgba(198, 40, 40, 0.7)',
+                            'rgba(183, 28, 28, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(211, 47, 47, 1)',
+                            'rgba(244, 67, 54, 1)',
+                            'rgba(229, 57, 53, 1)',
+                            'rgba(198, 40, 40, 1)',
+                            'rgba(183, 28, 28, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+
+            // График знаний молодежи
+            const knowledgeCtx = document.getElementById('knowledgeChart').getContext('2d');
+            const knowledgeChart = new Chart(knowledgeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Высокий', 'Средний', 'Низкий', 'Затрудняюсь'],
+                    datasets: [{
+                        data: [25, 48, 22, 5],
+                        backgroundColor: [
+                            'rgba(46, 125, 50, 0.7)',
+                            'rgba(255, 193, 7, 0.7)',
+                            'rgba(211, 47, 47, 0.7)',
+                            'rgba(158, 158, 158, 0.7)'
+                        ],
+                        borderColor: [
+                            'rgba(46, 125, 50, 1)',
+                            'rgba(255, 193, 7, 1)',
+                            'rgba(211, 47, 47, 1)',
+                            'rgba(158, 158, 158, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                        }
+                    }
+                }
+            });
+
+            // График традиций празднования
+            const celebrationCtx = document.getElementById('celebrationChart').getContext('2d');
+            const celebrationChart = new Chart(celebrationCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Парад по ТВ', 'Посещение мемориалов', 'Семейные встречи', 'Бессмертный полк', 'Другое'],
+                    datasets: [{
+                        label: 'Процент участников',
+                        data: [89, 65, 78, 54, 12],
+                        backgroundColor: 'rgba(211, 47, 47, 0.2)',
+                        borderColor: 'rgba(211, 47, 47, 1)',
+                        pointBackgroundColor: 'rgba(211, 47, 47, 1)',
+                        pointBorderColor: '#fff',
+                        pointHoverBackgroundColor: '#fff',
+                        pointHoverBorderColor: 'rgba(211, 47, 47, 1)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        r: {
+                            angleLines: {
+                                display: true
+                            },
+                            suggestedMin: 0,
+                            suggestedMax: 100
+                        }
+                    }
+                }
+            });
         });
     </script>
 </body>
