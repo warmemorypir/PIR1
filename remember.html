@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Тяжело вспоминать | В ПАМЯТЬ О ПОБЕДЕ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="wwwroot/css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        /* Основные стили для страницы */
+        .memory-section {
+            padding: 100px 0 60px;
+            background-color: #f9f9f9;
+        }
+        
+        .song-container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .song-container.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .song-header {
+            background: linear-gradient(135deg, #d32f2f, #b71c1c);
+            color: white;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .song-number {
+            position: absolute;
+            top: 18px;
+            left: 30px;
+            font-size: 2rem;
+            font-weight: semi-bold;
+            opacity: 0;
+        }
+        
+        .song-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 0;
+            padding-left: 40px;
+        }
+        
+        .song-author {
+            text-align: center;
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+        
+        .audio-player-container {
+            padding: 15px;
+            background: #f5f5f5;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .song-lyrics {
+            padding: 25px;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #333;
+            white-space: pre-line;
+        }
+        
+        .song-lyrics p {
+            margin-bottom: 1.5em;
+        }
+        
+        .song-lyrics .chorus {
+            font-weight: 500;
+            color: #d32f2f;
+            margin-left: 20px;
+        }
+        
+        /* Кастомные стили для аудиоплеера */
+        audio {
+            width: 100%;
+            height: 50px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        audio::-webkit-media-controls-play-button {
+            background-color: #d32f2f;
+            border-radius: 50%;
+        }
+        
+        audio::-webkit-media-controls-current-time-display,{
+	}
+        audio::-webkit-media-controls-time-remaining-display {
+            color: #333;
+        }
+        
+        audio::-webkit-media-controls-timeline {
+            background-color: #e0e0e0;
+            border-radius: 20px;
+        }
+        
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .song-title {
+                font-size: 1.3rem;
+                padding-left: 0;
+                margin-top: 20px;
+            }
+            
+            .song-number {
+                position: static;
+                display: block;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .song-lyrics {
+                padding: 15px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo">
+                <img src="wwwroot/images/icon.svg" alt="Логотип Герб СССР">
+                <div class="logo-text">
+                    <h1>В&nbsp;ПАМЯТЬ О&nbsp;ПОБЕДЕ</h1>
+                    <p>1941-1945</p>
+                </div>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
+                    <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+                    <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+                    <li><a href="poll.html"><i class="fas fa-poll"></i> Опрос</a></li>
+                    <li><a href="remember.html" class="active"><i class="fas fa-music"></i> Тяжело&nbsp;вспоминать</a></li>
+                    <li><a href="about.html"><i class="fas fa-info-circle"></i> О&nbsp;проекте</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section memory-section">
+    <section class="section about-section" style="padding-top: 70px;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Тяжело вспоминать</h2>
+                <p>Песни военных лет и о войне, которые трогают душу</p>
+            </div>
+            
+            <!-- Песня 1 -->
+            <div class="song-container" id="song1">
+                <div class="song-header">
+                    <div class="song-number">1</div>
+                    <h3 class="song-title">Непокорённый</h3>
+                    <div class="song-author">Кипелов. Альбом Непокорённый</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song1.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>Небо Балтики давит свинцом
+Город держит за горло блокада
+Медный всадник и ангел с крестом
+Батальонам подвозят снаряды
+Львы из камня срываются с мест
+Чтоб с бойцами подняться в атаку –
+Непокорных жестокая месть
+Наступление. Крушение мрака
+                    <p class="chorus">Непокорённый, прошедший сквозь ад
+Непокорённый герой Ленинград
+Непокорённый на все времена
+Непокорённый город Петра!
+                    <p>Пишет жизнь слабой детской рукой
+Даты смерти на саване снега
+Что тогда бы случилось с тобой?
+Смог остаться бы ты человеком?
+Не сдаваться и в голос не выть
+Убивая за хлебные крошки?
+Свет надежды сумел бы хранить
+Под раскаты немецкой бомбежки?
+                    <p class="chorus">Непокорённый, прошедший сквозь ад
+Непокорённый герой Ленинград
+Непокорённый на все времена
+Непокорённый город Петра!
+                    <p>Чернота. Хрупкий ладожский лёд
+Уходящие дети под воду
+Метроном отобьет скорбный счёт
+Всех погибших в блокадные годы
+Нервы города – к сердцу земли
+Силы взять и к весне возродиться
+Медный всадник к победе летит
+Неподвластной забвению птицей
+                    <p class="chorus">Непокорённый, прошедший сквозь ад
+Непокорённый герой Ленинград
+Непокорённый на все времена
+Непокорённый город Петра!
+                </div>
+            </div>
+            
+            <!-- Песня 2 -->
+            <div class="song-container" id="song2">
+                <div class="song-header">
+                    <div class="song-number">2</div>
+                    <h3 class="song-title">Весы Судьбы</h3>
+                    <div class="song-author">Кипелов. Альбом Весы Судьбы</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song2.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>Снова небо окрасилось алым
+Смерть кровавую жатву ведёт
+И дымит запал, только ждём сигнал
+Ждём, чтобы рвануться вперёд
+От ракет ночь светлее, чем полдень
+Степь готова взорваться огнём
+Против стали сталь
+И клубится даль
+Жалит свинцовым дождём
+                    <p class="chorus">Между небом и землёй
+Жизнь и смерть ведут свой бой
+Снова на весах судьбы
+Все надежды и мечты
+Твои
+                    <p>Кто отстал те горят словно свечи
+Но хранит нас танковый бог
+И ревёт броня, наша цель одна
+Жечь их железный поток
+                    <p class="chorus">Между небом и землёй
+Жизнь и смерть ведут свой бой
+Снова на весах судьбы
+Все надежды и мечты
+Твои
+                    <p>Звуки боя затихнут внезапно
+Тишина всех накроет волной
+Неужели всё, солнце вновь зашло
+Но как недолог покой
+                    <p class="chorus">Между небом и землёй
+Жизнь и смерть ведут свой бой
+Снова на весах судьбы
+Все надежды и мечты
+Твои
+                    <p>На весах судьбы
+На весах судьбы</p>
+
+                </div>
+            </div>
+            
+            <!-- Песня 3 -->
+            <div class="song-container" id="song3">
+                <div class="song-header">
+                    <div class="song-number">3</div>
+                    <h3 class="song-title">Огненная дуга</h3>
+                    <div class="song-author">Кипелов. Альбом Часы Судного дня</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song3.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>Как прозрачна глубина небесных чистых рек
+Там и солнце, и луна за веком тянут век
+По теченью свет плывёт, омут прячет тьму
+Я увидел в вышине огненную дугу
+Может это был сон мой, разума игра…
+Чей-то голос мне шептал, чтоб этот мир спасти
+Свой путь по огненной дуге должен ты пройти
+Призраки семи грехов терзали душу мне
+Я шёл вперед, кляня свой рок, сжимая крест в руке
+Смерть в лицо смеялась мне, скалясь и кружа
+                    <p class="chorus">Огненная дуга - мост над жизнью земной
+Только сильный духом пройдет по нему, вызвав судьбу на бой
+Огненная дуга. Можно не верить в неё
+Но всё чаще и чаще она в небе над нами встаёт
+                    <p>В клочья рвал меня мой страх - героем не был я
+Но отчаянно звала проклятая дуга!
+Разум мой - сплошной ожог и нестерпима боль
+Я горел, но всё же шёл над спящею землёй
+Равен пытке был каждый новый шаг
+Огненная дуга - мост над жизнью земной
+Только сильный духом пройдет по нему, вызвав судьбу на бой
+Огненная дуга. Можно не верить в неё
+Но всё чаще и чаще она в небе над нами встаёт
+Равен пытке был каждый новый шаг
+                    <p class="chorus">Огненная дуга - мост над жизнью земной
+Только сильный духом пройдет по нему, вызвав судьбу на бой
+Огненная дуга. Можно не верить в неё
+Но всё чаще и чаще она в небе над нами встаёт
+Огненная дуга - мост над жизнью земной
+Только сильный духом пройдет по нему, вызвав судьбу на бой
+Огненная дуга. Можно не верить в неё
+Но всё чаще и чаще она в небе над нами встаёт
+                    <p>До конца путь не дойти
+Едва ли хватит сил
+Я хотел спасти тот мир
+Мир, что так любил
+                </div>
+            </div>
+            
+            <!-- Песня 4 -->
+            <div class="song-container" id="song4">
+                <div class="song-header">
+                    <div class="song-number">4</div>
+                    <h3 class="song-title">1100</h3>
+                    <div class="song-author">Ария. Альбом Герой асфальта</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song4.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>Не дотянем мы до полночи,
+Нас накрыл зенитный шквал,
+Смысла нет взывать о помощи,
+Жжёт руки штурвал.
+Режет небо луч прожектора,
+Рядом чёрные кресты,
+Обгораем в этом пекле мы,
+А штурман просит высоты.
+                    <p class="chorus">Тысяча сто, тысяча сто, тысяча сто,
+Смерть в лицо нам дышит.
+Тысяча сто, тысяча сто, тысяча сто.
+                    <p>Наш стрелок был сущим дьяволом,
+Он не думал умирать,
+Чёрный крест заходит справа нам,
+Но некому стрелять.
+То ли пламя, то ли ненависть
+Ослепляет всех, кто жив,
+Нам в такой конец не верилось,
+А штурман твердит, как мотив...
+                    <p class="chorus">Тысяча сто, тысяча сто, тысяча сто,
+Смерть в лицо нам дышит.
+Тысяча сто, тысяча сто, тысяча сто.
+                    <p>На земле стальное крошево,
+Здесь вершится правый суд,
+Чтобы всё оставить прошлому
+Нам хватит двух минут.
+Мы летим к земле, как молния,
+Поминая всех святых,
+Жаль, что в будущем безмолвии
+Нет этой высоты.
+                    <p class="chorus">Тысяча сто, тысяча сто, тысяча сто,
+Смерть в лицо нам дышит.
+Тысяча сто, тысяча сто, тысяча сто.
+Тысяча сто, тысяча сто, тысяча сто,
+Смерть в лицо нам дышит.
+Тысяча сто, тысяча сто, тысяча сто.
+                </div>
+            </div>
+            
+            <!-- Песня 5 -->
+            <div class="song-container" id="song5">
+                <div class="song-header">
+                    <div class="song-number">5</div>
+                    <h3 class="song-title">Битва за Москву</h3>
+                    <div class="song-author">Radio Tapok. Альбом Битва за Москву
+</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song5.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>41-й год, враг нас гнал, идя в обход
+Великий Рейх всю свою мощь направил в бой
+Маршируя в ад миллионами солдат
+Вермахт шёл к сердцу страны, встав под Москвой
+И маршал Жуков
+Фронт приняв в руки
+Поднял в ружьё полки
+И сказал, сынки!
+                    <p class="chorus">Родина никогда вас не забудет
+Некуда отступать, за нами Москва
+И насмерть стояли они под залп орудий
+И память в наших сердцах о них на века
+                    <p>Вновь Бородино, снова смерть твоих сынов
+Вновь зверь бросил взгляд свирепый на Восток
+Силы не равны, но поезда со всей страны
+Свозят все резервы сделать марш-бросок
+От Казахстана
+До Магадана
+На смерть идут полки
+Смело в бой, сынки!
+                    <p class="chorus">Родина никогда вас не забудет
+Некуда отступать, за нами Москва
+И насмерть стояли они под залп орудий
+И память в наших сердцах о них на века
+                    <p>6 декабря 1941-го года войска нашего Западного фронта
+Перешли в контрнаступление против ударных фланговых группировок
+                    <p class="chorus">Родина никогда вас не забудет
+Некуда отступать, за нами Москва
+И насмерть стояли они под залп орудий
+И память в наших сердцах о них на века
+Родина никогда вас не забудет
+Некуда отступать, за нами Москва
+И насмерть стояли они под залп орудий
+И память в наших сердцах о них на века
+                    <p class="chorus">Родина никогда вас не забудет
+Некуда отступать, за нами Москва
+И насмерть стояли они под залп орудий
+И память в наших сердцах о них на века
+                </div>
+            </div>
+            
+            <!-- Песня 6 -->
+            <div class="song-container" id="song6">
+                <div class="song-header">
+                    <div class="song-number">6</div>
+                    <h3 class="song-title">Defence of Moscow</h3>
+                    <div class="song-author">Sabaton. Альбом Defence of Moscow</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song6.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>As the Wehrmacht overrun, Russia 1941
+<font color="gray">Когда вермахт захватил Россию, 1941 год</font>
+They don't belong, we stand our ground, a million strong
+<font color="gray">Им здесь не место, мы стоим на своем, миллионная армия.</font>
+We are ready for their strike, face the army of the reich
+<font color="gray">Мы готовы к их удару, лицом к лицу с армией рейха</font>
+A million strong, this is our land, they don't belong
+<font color="gray">Миллион человек, это наша земля, им здесь не место</font>
+Hear Marshal Zhukov's, and Stalin's orders
+<font color="gray">Выслушайте приказы маршала Жукова и Сталина</font>
+Defend the motherland, Moscow shall not fall!
+<font color="gray">Защищайте родину, Москва не падет!</font>
+                    <p class="chorus">Stand and follow command, our blood for the homeland
+<font color="gray">Стойте и выполняйте приказ, наша кровь за родину</font>
+Heed the motherland's call, and brace for the storm
+<font color="gray">Прислушайтесь к зову родины и приготовьтесь к буре</font>
+Moscow will never give in, there is no surrender
+<font color="gray">Москва никогда не сдастся, капитуляции нет</font>
+Force them into retreat, and into defeat
+<font color="gray">Вынудите их отступить и потерпеть поражение</font>
+                    <p>Facе the volleys of their guns, for Russia's daughtеrs and her sons
+<font color="gray">Встаньте лицом к лицу с залпами их орудий ради дочерей и сыновей России</font>
+All the brave, who stand against the typhoon wave
+<font color="gray">Все храбрецы, которые противостоят волне тайфуна</font>
+From the mountains and the plains, come in thousands on the trains
+<font color="gray">С гор и равнин тысячами приезжают на поездах</font>
+Day and night, they're rolling in, to join the fight
+<font color="gray">Днем и ночью они прибывают сюда, чтобы присоединиться к битве</font>
+From Kazakhstan to Magadan
+<font color="gray">Из Казахстана в Магадан</font>
+Call of the motherland, Russia shall prevail!
+<font color="gray">Зов родины, Россия восторжествует!</font>
+                    <p class="chorus">Stand and follow command, our blood for the homeland
+<font color="gray">Стойте и выполняйте приказ, наша кровь за родину</font>
+Heed the motherland's call, and brace for the storm
+<font color="gray">Прислушайтесь к зову родины и приготовьтесь к буре</font>
+Moscow will never give in, there is no surrender
+<font color="gray">Москва никогда не сдастся, капитуляции нет</font>
+Force them into retreat, and into defeat
+<font color="gray">Вынудите их отступить и потерпеть поражение</font>
+                    <p class="chorus">Stand and follow command, our blood for the homeland
+<font color="gray">Стойте и выполняйте приказ, наша кровь за родину</font>
+Heed the motherland's call, and brace for the storm
+<font color="gray">Прислушайтесь к зову родины и приготовьтесь к буре</font>
+Moscow will never give in, there is no surrender
+<font color="gray">Москва никогда не сдастся, капитуляции нет</font>
+Force them into retreat, and into defeat
+<font color="gray">Вынудите их отступить и потерпеть поражение</font>
+                    <p class="chorus">Stand and follow command, our blood for the homeland
+<font color="gray">Стойте и выполняйте приказ, наша кровь за родину</font>
+Heed the motherland's call, and brace for the storm
+<font color="gray">Прислушайтесь к зову родины и приготовьтесь к буре</font>
+Moscow will never give in, there is no surrender
+<font color="gray">Москва никогда не сдастся, капитуляции нет</font>
+Force them into retreat, and into defeat
+<font color="gray">Вынудите их отступить и потерпеть поражение</font>
+                    <p>Stand and follow command, our blood for the homeland!!!!!!
+<font color="gray">Стойте и выполняйте приказ, наша кровь за родину!!!!!!</font>
+                </div>
+            </div>
+            
+            <!-- Песня 7 -->
+            <div class="song-container" id="song7">
+                <div class="song-header">
+                    <div class="song-number">7</div>
+                    <h3 class="song-title">Panzerkampf</h3>
+                    <div class="song-author">Sabaton. Альбом The Art of War</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song7.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>Into the motherland the German army march
+<font color="gray">Марш немецкой армии на родину</font>
+In the Soviet Union
+<font color="gray">В Советском Союзе</font>
+Summer 1943
+<font color="gray">Лето 1943 года</font>
+Tanks line up in thousands
+<font color="gray">Танки выстраиваются тысячами</font>
+As far the eye can see
+<font color="gray">Насколько хватает глаз</font>
+Ready for the onslaught
+<font color="gray">Готовый к нападению</font>
+Ready for the fight
+<font color="gray">Готов к бою</font>
+Waiting for the Axis
+<font color="gray">Ожидание оси</font>
+To march into the trap
+<font color="gray">Идти прямо в ловушку</font>
+Mines are placed in darkness
+<font color="gray">Мины устанавливаются в темноте</font>
+In the cover of the night
+<font color="gray">Под покровом ночи</font>
+Waiting to be triggered
+<font color="gray">Ожидание срабатывания</font>
+When the time is right
+<font color="gray">Когда настанет подходящее время</font>
+Imminent invasion,
+<font color="gray">Неминуемое вторжение,</font>
+Imminent attack
+<font color="gray">Неминуемое нападение</font>
+Once the battle started
+<font color="gray">Как только началась битва</font>
+There's no turning back
+<font color="gray">Пути назад нет</font>
+The end of The Third Reich draws near
+<font color="gray">Конец Третьего рейха приближается</font>
+Its time has come to an end
+<font color="gray">Его время подошло к концу</font>
+The end of an era is here
+<font color="gray">Наступил конец целой эпохи</font>
+It's time to attack!
+<font color="gray">Пришло время атаковать!</font>
+                    <p class="chorus">Into the motherland the German army march
+<font color="gray">Марш немецкой армии на родину</font>
+Comrades stand side by side to stop the Nazi charge
+<font color="gray">Товарищи стоят бок о бок, чтобы остановить атаку нацистов</font>
+Panzers on Russian soil, a thunder in the east
+<font color="gray">Танки на российской земле, раскат грома на востоке</font>
+One million men at war
+<font color="gray">Миллион человек на войне</font>
+Soviet wrath unleashed!
+<font color="gray">Советский гнев вырвался на волю!</font>
+                    <p>Fields of Prokhorovka
+<font color="gray">Поля Прохоровки</font>
+Where the heat of battle burned
+<font color="gray">Где пылал жар битвы</font>
+Suffered heavy losses
+<font color="gray">Понес тяжелые потери</font>
+And the tide of war was turned
+<font color="gray">И ход войны был переломлен</font>
+Driving back the Germans
+<font color="gray">Оттесняем немцев</font>
+Fighting on four fronts
+<font color="gray">Сражаясь на четырех фронтах</font>
+Hunt them out of Russia
+<font color="gray">Выслеживайте их за пределами России</font>
+Out of Soviet land
+<font color="gray">Прочь с советской земли</font>
+Reinforce the front line
+<font color="gray">Укрепляйте линию фронта</font>
+Force the Axis to retreat
+<font color="gray">Вынудите Ось отступить</font>
+Send in all the reserves
+<font color="gray">Отправьте все резервы</font>
+Securing their defeat
+<font color="gray">Обеспечив себе их поражение</font>
+Soldiers of the Union
+<font color="gray">Солдаты Союза</font>
+Broke the citadel
+<font color="gray">Разрушил цитадель</font>
+Ruins of an army
+<font color="gray">Руины армии</font>
+Axis rest in hell
+<font color="gray">Ось покоится в аду</font>
+The end of the third Reich draws near
+<font color="gray">Конец третьего рейха приближается</font>
+Its time has come to an end
+<font color="gray">Его время подошло к концу</font>
+The end of an era is here
+<font color="gray">Наступил конец целой эпохи</font>
+It's time to attack!
+<font color="gray">Пришло время атаковать!</font>
+                    <p class="chorus">Into the motherland the German army march
+<font color="gray">Марш немецкой армии на родину</font>
+Comrades stand side by side to stop the Nazi charge
+<font color="gray">Товарищи стоят бок о бок, чтобы остановить атаку нацистов</font>
+Panzers on Russian soil, a thunder in the east
+<font color="gray">Танки на российской земле, раскат грома на востоке</font>
+One million men at war
+<font color="gray">Миллион человек на войне</font>
+Soviet wrath unleashed!
+<font color="gray">Советский гнев вырвался на волю!</font>
+                    <p>Onward comrades!
+<font color="gray">Вперед, товарищи!</font>
+Onward for the Soviet Union!
+<font color="gray">Вперед, за Советский Союз!</font>
+Charge!
+<font color="gray">Атакуй!</font>
+Oh, mother Russia!
+<font color="gray">О, матушка Россия!</font>
+Union of lands
+<font color="gray">Союз земель</font>
+Will of the people
+<font color="gray">Воля народа</font>
+Strong in command
+<font color="gray">Силен в управлении</font>
+Oh, mother Russia!
+<font color="gray">О, матушка Россия!</font>
+Union of lands
+<font color="gray">Союз земель</font>
+Once more victorious
+<font color="gray">Еще раз одержав победу</font>
+The Red Army stands!
+<font color="gray">Красная Армия стоит!</font>
+The end of The Third Reich draws near
+<font color="gray">Конец Третьего рейха приближается</font>
+Its time has come to an end
+<font color="gray">Его время подошло к концу</font>
+The end of an era is here
+<font color="gray">Наступил конец целой эпохи</font>
+It's time to attack!
+<font color="gray">Пришло время атаковать!</font>
+                    <p class="chorus">Into the motherland the German army march
+<font color="gray">Марш немецкой армии на родину</font>
+Comrades stand side by side to stop the Nazi charge
+<font color="gray">Товарищи стоят бок о бок, чтобы остановить атаку нацистов</font>
+Panzers on Russian soil, a thunder in the east
+<font color="gray">Танки на российской земле, раскат грома на востоке</font>
+One million men at war
+<font color="gray">Миллион человек на войне</font>
+Soviet wrath unleashed!
+<font color="gray">Советский гнев вырвался на волю!</font>
+                </div>
+            </div>
+            
+            <!-- Песня 8 -->
+            <div class="song-container" id="song8">
+                <div class="song-header">
+                    <div class="song-number">8</div>
+                    <h3 class="song-title">Stalingrad</h3>
+                    <div class="song-author">Sabaton. Альбом Primo Victoria</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song8.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>Fresh from Moscow
+<font color="gray">Прямо из Москвы</font>
+Over Volga came to comrades aid
+<font color="gray">Через Волгу идём на помощь товарищам.</font>
+City in despair
+<font color="gray">Город в отчаянии,</font>
+Almost crushed by the Führer's army
+<font color="gray">Почти разрушен армией фюрера!</font>
+Oh, it's colder than hell
+<font color="gray">Здесь холодней, чем в Аду.</font>
+Hitler's forces advancing
+<font color="gray">Войска Гитлера прибывают!</font>
+The sound of the mortars
+<font color="gray">Звуки выстрелов миномётов</font>
+The music of death
+<font color="gray">Музыка смерти.</font>
+A grand symphony
+<font color="gray">Величественная симфония!</font>
+See your friends fall hear them
+<font color="gray">Видишь, как твои друзья</font>
+Pray to the god your country denies
+<font color="gray">Молятся богу, которого отрицают в твоей стране.</font>
+Every man dies alone and when your
+<font color="gray">Каждый умирает в одиночестве, и когда твоё время придёт</font>
+Time comes you will know that it's time
+<font color="gray">Ты поймёшь — твой час пробил.</font>
+Stalin's fortress on fire
+<font color="gray">Крепость Сталина в огне.</font>
+Is this madness or hell?
+<font color="gray">Это безумие или ад?</font>
+The sound of the mortars
+<font color="gray">Звуки выстрелов миномётов</font>
+The music of death
+<font color="gray">Музыка смерти</font>
+We're playing the devil's symphony
+<font color="gray">Мы играем дьявольскую симфонию</font>
+Our violins are guns
+<font color="gray">Пушки — наши скрипки!</font>
+Conducted from hell
+<font color="gray">Ими дирижируют из ада!</font>
+Oh, Stalingrad
+<font color="gray">О, Сталинград!</font>
+Mratnimiat
+<font color="gray">Mratnimiat.</font>
+Are you playing?
+<font color="gray">Ты играешь?</font>
+Do you follow the conductor's lead?
+<font color="gray">Ты следуешь указанием дирижёра?</font>
+No one knows you
+<font color="gray">О тебе никто не знает!</font>
+No one cares about a single violin
+<font color="gray">Никому нет дела о единственной скрипке!</font>
+Play the score of the damned
+<font color="gray">Играй партию проклятых!</font>
+Know the devil within
+<font color="gray">Познай дьявола изнутри!</font>
+                </div>
+            </div>
+            
+            <!-- Песня 9 -->
+            <div class="song-container" id="song9">
+                <div class="song-header">
+                    <div class="song-number">9</div>
+                    <h3 class="song-title">Night Witches</h3>
+                    <div class="song-author">Sabaton. Альбом Heroes
+</div>
+                </div>
+                <div class="audio-player-container">
+                    <audio controls class="audio-player">
+                        <source src="wwwroot/audio/song9.mp3" type="audio/mpeg">
+                        Ваш браузер не поддерживает аудио элемент.
+                    </audio>
+                </div>
+                <div class="song-lyrics">
+                    <p>From the depths of hell in silence
+<font color="gray">Из глубин ада в тишине</font>
+Cast their spells, explosive violence
+<font color="gray">Произносят свои заклинания, взрывоопасное насилие</font>
+Russian night time, flight perfected
+<font color="gray">Ночное время в России, полет отточен до совершенства</font>
+Flawless vision, undetected
+<font color="gray">Безупречное зрение, незамеченное</font>
+From the depths of hell in silence
+<font color="gray">Из глубин ада в тишине</font>
+Cast their spells, explosive violence
+<font color="gray">Произносят свои заклинания, взрывоопасное насилие</font>
+Russian night time, flight perfected
+<font color="gray">Ночное время в России, полет отточен до совершенства</font>
+Flawless vision, undetected
+<font color="gray">Безупречное зрение, незамеченное</font>
+Pushing on and on, their planes are going strong
+<font color="gray">Продвигаясь все дальше и дальше, их самолеты набирают силу</font>
+Air force's number one
+<font color="gray">Военно-воздушные силы номер один</font>
+Somewhere down below they're looking for the foe
+<font color="gray">Где-то внизу они ищут врага</font>
+Bombers on a run
+<font color="gray">Бомбардировщики на бегу</font>
+You can't hide, you can't move, just abide
+<font color="gray">Ты не можешь спрятаться, ты не можешь пошевелиться, просто оставайся</font>
+Their attack's been proved
+<font color="gray">Их нападение было доказано</font>
+Raiders in the dark
+<font color="gray">Налетчики в темноте</font>
+Silent through the night, the witches join the fight
+<font color="gray">Безмолвные всю ночь, ведьмы присоединяются к битве</font>
+Never miss their mark
+<font color="gray">Никогда не промахиваются мимо цели</font>
+Canvas wings of death
+<font color="gray">Парусиновые крылья смерти</font>
+Prepare to meet your fate
+<font color="gray">Приготовься встретить свою судьбу</font>
+Night bomber regiment 588
+<font color="gray">588 - й полк ночных бомбардировщиков</font>
+                    <p class="chorus">Undetected, unexpected
+<font color="gray">Незамеченный, неожиданный</font>
+Wings of glory
+<font color="gray">Крылья славы</font>
+Tell their story
+<font color="gray">Расскажите их историю</font>
+Aviation, deviation
+<font color="gray">Авиация, отклонение</font>
+Undetected, stealth perfected
+<font color="gray">Незамеченный, скрытность доведена до совершенства</font>
+                    <p>Foes are losing ground, retreating to the sound
+<font color="gray">Враги сдают позиции, отступая на звук</font>
+Death is in the air
+<font color="gray">Смерть витает в воздухе</font>
+Suddenly appears, confirming all your fears
+<font color="gray">Внезапно появляется, подтверждая все ваши опасения</font>
+Strike from witches lair
+<font color="gray">Удар из логова ведьм</font>
+Target found, come around, barrels sound
+<font color="gray">Цель обнаружена, разворачиваемся, раздается звук выстрелов</font>
+From the battleground
+<font color="gray">С поля битвы</font>
+Axis aiming high
+<font color="gray">Ось, направленная высоко</font>
+Rodina awaits, defeat them at the gates
+<font color="gray">Родина ждет, разгромите их у ворот</font>
+Live to fight and fly
+<font color="gray">Живи, чтобы сражаться и летать</font>
+Canvas wings of death
+<font color="gray">Парусиновые крылья смерти</font>
+Prepare to meet your fate
+<font color="gray">Приготовься встретить свою судьбу</font>
+Night bomber regiment 588
+<font color="gray">588 - й полк ночных бомбардировщиков</font>
+                    <p class="chorus">Undetected, unexpected
+<font color="gray">Незамеченный, неожиданный</font>
+Wings of glory
+<font color="gray">Крылья славы</font>
+Tell their story
+<font color="gray">Расскажите их историю</font>
+Aviation, deviation
+<font color="gray">Авиация, отклонение</font>
+Undetected, stealth perfected
+<font color="gray">Незамеченный, скрытность доведена до совершенства</font>
+                    <p>Beneath the starlight of the heavens
+<font color="gray">Под звездным светом небес</font>
+Unlikely heroes in the skies (witches to attack, witches coming back)
+<font color="gray">Невероятные герои в небесах (ведьмы атакуют, ведьмы возвращаются)</font>
+As they appear on the horizon
+<font color="gray">Когда они появляются на горизонте</font>
+The wind will whisper when the Night Witches come
+<font color="gray">Ветер будет шептать, когда придут ночные ведьмы</font>
+                    <p class="chorus">Undetected, unexpected
+<font color="gray">Незамеченный, неожиданный</font>
+Wings of glory
+<font color="gray">Крылья славы</font>
+Tell their story
+<font color="gray">Расскажите их историю</font>
+Aviation, deviation
+<font color="gray">Авиация, отклонение</font>
+Undetected, stealth perfected
+<font color="gray">Незамеченный, скрытность доведена до совершенства</font>
+                    <p>From the depths of hell in silence
+<font color="gray">Из глубин ада в тишине</font>
+Cast their spells, explosive violence
+<font color="gray">Произносят свои заклинания, взрывоопасное насилие</font>
+Russian night time flight perfected
+<font color="gray">Российский ночной полет доведен до совершенства</font>
+Flawless vision, undetected
+<font color="gray">Безупречное зрение, незамеченное</font>
+From the depths of hell in silence
+<font color="gray">Из глубин ада в тишине</font>
+Cast their spells, explosive violence
+<font color="gray">Произносят свои заклинания, взрывоопасное насилие</font>
+Russian night time flight perfected
+<font color="gray">Российский ночной полет доведен до совершенства</font>
+Flawless vision, undetected
+<font color="gray">Безупречное зрение, незамеченное</font>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        // Анимация появления элементов при скролле
+        function animateOnScroll() {
+            const songContainers = document.querySelectorAll('.song-container');
+            
+            songContainers.forEach((container, index) => {
+                const containerPosition = container.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.1;
+                
+                if (containerPosition < screenPosition) {
+                    setTimeout(() => {
+                        container.classList.add('animated');
+                    }, index * 200);
+                }
+            });
+        }
+        
+        // Инициализация анимации при загрузке и скролле
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Обработка навигации
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                if (window.innerWidth <= 768) {
+                    document.getElementById('mainNav').classList.remove('active');
+                }
+            });
+        });
+        
+        // Фиксация шапки при скролле
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Мобильное меню
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', function() {
+            mainNav.classList.toggle('active');
+        });
+    </script>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О проекте</h3>
+                    <p>Сайт посвящён памяти о Великой Отечественной войне и о героических подвигах советского народа.</p>
+                    <div class="social-links">
+                        <a href="https://t.me/memoryaboutwin"><i class="fab fa-telegram"></i></a>
+                        <a href="https://rutube.ru/channel/63769978/videos/"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Разделы</h3>
+                    <ul class="footer-links">
+                    <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
+                    <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
+                    <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
+                    <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> О&nbsp;проекте</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ресурсы</h3>
+                    <ul class="footer-links">
+                    <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+                    <li><a href="poll.html"><i class="fas fa-poll"></i> Опрос</a></li>
+                    <li><a href="remember.html"><i class="fas fa-music"></i> Тяжело вспоминать</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <p><i class="fas fa-envelope"></i> warmemory@internet.ru</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Тюмень, ул. Ленина, 23</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2025 В ПАМЯТЬ О ПОБЕДЕ. Все права защищены.</p>
+		<img src="wwwroot/images/logo-utmn-mini.svg" width="120" height="85" alt="Тюменский государственный университет" class="no-movement">
+                <p>Тюменский государственный университет</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

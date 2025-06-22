@@ -14,6 +14,7 @@
     <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
     <link rel="stylesheet" href="wwwroot/css/statistics.css">
     <style>
+        /* Стили для переключения вкладок */
         .tab-buttons {
             display: flex;
             justify-content: center;
@@ -59,6 +60,7 @@
             display: block;
         }
         
+        /* Кнопка "Наверх" */
         .back-btn {
             display: inline-block;
             background-color: #d32f2f;
@@ -84,6 +86,7 @@
             margin-right: 5px;
         }
         
+        /* Анимации */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
@@ -97,6 +100,58 @@
             from { transform: translateY(-50px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        
+        /* Стили для карточек статистики опроса */
+        .stat-card.poll-card {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card.poll-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .stat-section {
+            margin-bottom: 50px;
+        }
+        
+        .stat-section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #d32f2f;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .key-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #d32f2f;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -105,7 +160,7 @@
             <div class="logo">
                 <img src="wwwroot/images/icon.svg" alt="Логотип Герб СССР">
                 <div class="logo-text">
-                    <h1>В ПАМЯТЬ О&nbsp;ПОБЕДЕ</h1>
+                    <h1>В&nbsp;ПАМЯТЬ О&nbsp;ПОБЕДЕ</h1>
                     <p>1941-1945</p>
                 </div>
             </div>
@@ -120,15 +175,17 @@
                     <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
                     <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
                     <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
-                    <li><a href="statistics.html" class="active"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+                    <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
                     <li><a href="poll.html"><i class="fas fa-poll"></i> Опрос</a></li>
+                    <li><a href="remember.html" class="active"><i class="fas fa-music"></i> Тяжело&nbsp;вспоминать</a></li>
                     <li><a href="about.html"><i class="fas fa-info-circle"></i> О&nbsp;проекте</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-	<section class="section mt-5" style="padding-top: 100px;">
+    <section class="section about-section" style="padding-top: 100px;">
+    <section class="section statistics-section">
         <div class="container statistics-container">
             <div class="section-title">
                 <h2>Статистика</h2>
@@ -257,36 +314,10 @@
             
             <!-- Статистика опросов -->
             <div id="poll-stats" class="tab-content">
-                <div class="stat-card">
+                <div class="stat-card poll-card">
                     <div class="section-title">
                         <h2>Результаты опроса</h2>
                         <p>Анализ мнений 275 респондентов о роли СССР во Второй мировой войне</p>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="stat-card">
-                                <div class="key-number">275</div>
-                                <h3>Всего ответов</h3>
-                                <p>Количество участников опроса</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            <div class="stat-card">
-                                <div class="key-number">69.1%</div>
-                                <h3>Семейная память</h3>
-                                <p>Имеют истории о родственниках-участниках ВОВ</p>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            <div class="stat-card">
-                                <div class="key-number">84.4%</div>
-                                <h3>Решающая роль</h3>
-                                <p>Считают, что СССР сыграл решающую роль в Победе</p>
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="stat-section">
@@ -331,6 +362,62 @@
                         </div>
                     </div>
                     
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Источники информации о роли СССР</h3>
+                        <div class="chart-container">
+                            <canvas id="sourcesChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Вклад стран в Победу</h3>
+                        <div class="chart-container">
+                            <canvas id="countriesChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Оценка роли СССР в мировом контексте</h3>
+                        <div class="chart-container">
+                            <canvas id="worldChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Обсуждение роли СССР сегодня</h3>
+                        <div class="chart-container">
+                            <canvas id="discussionChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Влияние геополитики на восприятие</h3>
+                        <div class="chart-container">
+                            <canvas id="geopoliticsChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Освещение роли СССР в школах</h3>
+                        <div class="chart-container">
+                            <canvas id="educationChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Меры по сохранению памяти</h3>
+                        <div class="chart-container">
+                            <canvas id="memoryChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-section">
+                        <h3 class="stat-section-title">Уроки борьбы с нацизмом</h3>
+                        <div class="chart-container">
+                            <canvas id="lessonsChart"></canvas>
+                        </div>
+                    </div>
+                    
                     <button class="back-btn" onclick="scrollToTop()">
                         <i class="fas fa-arrow-up"></i> Наверх
                     </button>
@@ -344,10 +431,10 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>О проекте</h3>
-                    <p>Сайт посвященный памяти о Великой Отечественной войне и героических подвигах советского народа.</p>
+                    <p>Сайт посвящён памяти о Великой Отечественной войне и о героических подвигах советского народа.</p>
                     <div class="social-links">
                         <a href="https://t.me/memoryaboutwin"><i class="fab fa-telegram"></i></a>
-                        <a href="https://rutube.ru/channel/63769978/"><i class="fab fa-youtube"></i></a>
+                        <a href="https://rutube.ru/channel/63769978/videos/"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
                 
@@ -357,7 +444,7 @@
                     <li><a href="index.html"><i class="fas fa-home"></i> Главная</a></li>
                     <li><a href="index.html#timeline"><i class="fas fa-history"></i> Хронология</a></li>
                     <li><a href="memorials.html"><i class="fas fa-monument"></i> Мемориал</a></li>
-                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
+                    <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> О&nbsp;проекте</a></li>
                     </ul>
                 </div>
                 
@@ -366,7 +453,8 @@
                     <ul class="footer-links">
                     <li><a href="statistics.html"><i class="fas fa-chart-bar"></i> Статистика</a></li>
                     <li><a href="poll.html"><i class="fas fa-poll"></i> Опрос</a></li>
-                    <li><a href="about.html"><i class="fas fa-info-circle"></i> О&nbsp;проекте</a></li>
+                    <li><a href="remember.html"><i class="fas fa-music"></i> Тяжело вспоминать</a></li>
+                    <li><a href="gallery.html"><i class="fas fa-images"></i> Галерея</a></li>
                     </ul>
                 </div>
                 
@@ -378,12 +466,9 @@
             </div>
             
             <div class="footer-bottom">
-                
-                <img src="wwwroot/images/logo-utmn-mini.svg" width="120" height="55" alt="Тюменский государственный университет" class="no-movement">
-                <p>Тюменский Государственный Университет</p>
-                <p>Источник данных: ssl.rosstat.gov.ru (Юбилейный статистический сборник «Великая Отечественная война»)</p>
-                <p>Г.Ф.Кривошеев (под редакцией). «Россия и СССР в войнах XX века: Потери вооруженных сил»</p>
                 <p>© 2025 В ПАМЯТЬ О ПОБЕДЕ. Все права защищены.</p>
+		<img src="wwwroot/images/logo-utmn-mini.svg" width="120" height="85" alt="Тюменский государственный университет" class="no-movement">
+                <p>Тюменский государственный университет</p>
             </div>
         </div>
     </footer>
@@ -424,10 +509,7 @@
                         { value: 26.6, itemStyle: { color: '#d32f2f' } },
                         { value: 5.3, itemStyle: { color: '#424242' } },
                         { value: 5.6, itemStyle: { color: '#1976d2' } },
-                        { value: 1.7, itemStyle: { color: '#7b1fa2' } },
-                        { value: 2.5, itemStyle: { color: '#455a64' } },
-                        { value: 1.04, itemStyle: { color: '#1976d2' } },
-                        { value: 1.2, itemStyle: { color: '#7b1fa2' } }
+                        { value: 1.7, itemStyle: { color: '#7b1fa2' } }
                     ],
                     label: {
                         show: true,
@@ -747,6 +829,352 @@
                 }
             });
             
+            // Источники информации
+            const sourcesCtx = document.getElementById('sourcesChart').getContext('2d');
+            const sourcesChart = new Chart(sourcesCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Школьное образование', 
+                        'Литература', 
+                        'Кино', 
+                        'Рассказы родственников', 
+                        'Госпрограммы',
+                        'Музыка'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [25.4, 20.5, 19.8, 16.5, 9.6, 8.3],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 30
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Источники информации о роли СССР (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Вклад стран
+            const countriesCtx = document.getElementById('countriesChart').getContext('2d');
+            const countriesChart = new Chart(countriesCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'СССР', 
+                        'США', 
+                        'Великобритания', 
+                        'Китай', 
+                        'Франция',
+                        'Чехословакия',
+                        'Польша',
+                        'Югославия'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [50.5, 16.9, 13.1, 6.1, 4.9, 3.2, 3, 2.3],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 60
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Вклад стран в Победу над нацизмом (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Оценка роли в мире
+            const worldCtx = document.getElementById('worldChart').getContext('2d');
+            const worldChart = new Chart(worldCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Часто обесценивается', 
+                        'Недооценена некоторыми', 
+                        'Обесценивается из-за геополитики', 
+                        'Недооценена по полит. причинам', 
+                        'Не обесценивается'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [36.9, 25.6, 18, 12.2, 7.3],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 40
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Оценка роли СССР в мировом историческом контексте (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Обсуждение сегодня
+            const discussionCtx = document.getElementById('discussionChart').getContext('2d');
+            const discussionChart = new Chart(discussionCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Беспокоит обесценивание', 
+                        'Дискуссии политизированы', 
+                        'Признаётся с оговорками', 
+                        'Обсуждается справедливо', 
+                        'Обсуждения поверхностны',
+                        'Вклад переоценивается'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [42.2, 21.1, 20, 8, 5.1, 3.6],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 50
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Отношение к современному обсуждению роли СССР (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Влияние геополитики
+            const geopoliticsCtx = document.getElementById('geopoliticsChart').getContext('2d');
+            const geopoliticsChart = new Chart(geopoliticsCtx, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Значительно искажает', 
+                        'Актуализировались', 
+                        'Усилила поляризацию', 
+                        'Не оказала влияния', 
+                        'Способствует новым нарративам'
+                    ],
+                    datasets: [{
+                        data: [53.5, 16.4, 15.6, 10.5, 4],
+                        backgroundColor: [
+                            '#d32f2f',
+                            '#f44336',
+                            '#e57373',
+                            '#ef9a9a',
+                            '#ffcdd2'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Влияние геополитики на восприятие роли СССР (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            position: 'right'
+                        }
+                    }
+                }
+            });
+            
+            // Освещение в школах
+            const educationCtx = document.getElementById('educationChart').getContext('2d');
+            const educationChart = new Chart(educationCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Достаточно', 
+                        'Достаточно, но смещены акценты', 
+                        'Недостаточно в постсоветских странах', 
+                        'Достаточно, но улучшить методику', 
+                        'Недостаточно глобально',
+                        'Затрудняюсь ответить',
+                        'Политические причины'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [38.9, 17.1, 12.7, 12.4, 8.7, 5.8, 4.4],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 50
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Освещение роли СССР в школьной программе (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Меры по сохранению памяти
+            const memoryCtx = document.getElementById('memoryChart').getContext('2d');
+            const memoryChart = new Chart(memoryCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Документальное кино', 
+                        'Улучшение учебных программ', 
+                        'Современные технологии', 
+                        'Проекты для молодёжи', 
+                        'Борьба с искажением истории',
+                        'Мемориальные мероприятия'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [19.3, 18.8, 17, 15.8, 15.5, 13.7],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    indexAxis: 'y',
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 25
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Меры по сохранению памяти о вкладе СССР (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
+            // Уроки борьбы с нацизмом
+            const lessonsCtx = document.getElementById('lessonsChart').getContext('2d');
+            const lessonsChart = new Chart(lessonsCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Цена войны и важность мира', 
+                        'Противодействие нацизму', 
+                        'Толерантность и уважение', 
+                        'Защита прав человека'
+                    ],
+                    datasets: [{
+                        label: 'Процент ответов',
+                        data: [34.3, 28, 19.5, 18.1],
+                        backgroundColor: '#d32f2f',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 40
+                        }
+                    },
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Уроки борьбы с нацизмом для современного общества (%)',
+                            font: {
+                                size: 16
+                            }
+                        },
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+            
             // Переключение между вкладками
             const tabBtns = document.querySelectorAll('.tab-btn');
             const tabContents = document.querySelectorAll('.tab-content');
@@ -775,6 +1203,14 @@
                 roleChart.resize();
                 victoryChart.resize();
                 eventsChart.resize();
+                sourcesChart.resize();
+                countriesChart.resize();
+                worldChart.resize();
+                discussionChart.resize();
+                geopoliticsChart.resize();
+                educationChart.resize();
+                memoryChart.resize();
+                lessonsChart.resize();
             });
         });
         
